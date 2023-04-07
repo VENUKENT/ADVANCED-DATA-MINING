@@ -1,0 +1,201 @@
+---
+title: "ADM_Assignment_1"
+author: "Vdodda"
+date: "03/04/2023"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+
+
+**1. What is the main purpose of regularization when training predictive models?**
+
+Regularization:
+Each machine learning model aims to discover patterns from training data and generalize them to accurately predict data that hasn't been seen before. Generalization, then, refers to a model's capacity to respond to fresh data. The model's lack of generalization has a variety of factors. One of them is excessive model fitting. Overfitting occurs when a model becomes so complex that it learns the detail and noise in the training data to the point that it has a detrimental effect on the model's performance on fresh data. In other words, the model picks up on the noise or random oscillations in the training data and learns them as ideas. Hence, the estimator's variance has grown.
+
+By making the model less complicated, regularization is employed as an approach to improve the model's ability to generalize. Regularization makes an effort to make a model more effective by making it simpler. Regularization penalizes the model by reducing its complexity and simplification. Machine learning models are tuned via regularization to reduce the adjusted loss function and avoid overfitting or underfitting. We can properly fit our machine learning model on a particular test set using regularization, which lowers the mistakes in the test set. 
+There are several sorts of regularization procedures, each with its own set of advantages and disadvantages.
+
+L1 regularization or Lasso Regularization: It introduces a penalty term proportional to the absolute value of the model's weights. This encourages sparse solutions, in which just a fraction of the features is incorporated in the final model. L1 regularization can be effective when the dataset contains a large number of characteristics, but only a few of them are likely to be significant.
+
+L2 regularization or Ridge Regularization: It introduces a penalty term proportional to the square of the model's weights. This encourages lighter weights generally, which can assist to minimize overfitting. L2 regularization can be beneficial when the dataset contains a large number of characteristics, all of which are potentially important.
+Dropout Regularization: This is a strategy in which random units in the model are momentarily "dropped out" or ignored during training, thus decreasing the model's capacity and inhibiting unit co-adaptation. When the dataset is huge and complicated, and the model has a high capacity, dropout regularization can be effective.
+
+To summarize, regularization is a strategy for preventing overfitting in predictive models by introducing restrictions that encourage the model to learn only the most significant elements of the input. The regularization approach utilized is determined by the specific situation at hand as well as the characteristics of the data being used.
+
+**2. What is the role of a loss function in a predictive model? And name two common loss functions for regression models and two common loss functions for classification models. **
+
+Loss functions quantify how far an estimated value provided by the predictive model differs from its real value. They specify an objective against which the model's performance is measured, and the parameters learned by the model are selected by minimizing a predefined loss function. Therefore, the loss function is the function that computes the difference between the algorithm's present output and its predicted output. It is a tool for assessing how well your algorithm models data. The loss is reduced further by modifying the model parameters until the lowest feasible loss is attained. These are some examples of Loss functions and how they operate.
+
+For regression models, the following loss functions are commonly used:
+
+Mean Squared Error (MSE): Mean Squared Error is the average of the squared differences between the actual and the predicted values. 
+Mean Absolute Error (MAE): Mean Absolute Error is a basic yet robust loss function that is used in regression models. Because of the occurrence of outliers, variables in regression problems may not be precisely Gaussian (values that are very different from the rest of the data). In such instances, Mean Absolute Error would be an excellent choice because it does not take into account the direction of the outliers (unrealistically high positive or negative values). MAE computes the average sum of the absolute discrepancies between the actual and anticipated values.
+
+Classification loss functions that are commonly used:
+
+Binary Cross Entropy: This is the most popular loss function for two-class classification tasks. The seemingly out-of-place term "entropy" has a statistical meaning. Entropy measures the unpredictability of the information being processed, whereas cross-entropy measures the difference in randomness between two random variables. 
+
+If the divergence of the predicted probability from the actual label increases, the cross-entropy loss increases. 
+
+Categorical Cross-Entropy Loss:
+
+Categorical Cross Entropy Loss is just Binary Cross Entropy Loss multiplied by the number of classes. One prerequisite for using the categorical cross-entropy loss function is that the labels be encoded only once. As a result of the vector's other members being multiplied by zero, just one element will be non-zero. This attribute is extended to a SoftMax activation function.
+
+To summarize, the loss function is an important part of a predictive model since it quantifies the difference between expected and actual outputs and is used to train the model by altering its parameters. The loss function to be utilized is determined by the task at hand and the type of model being employed.
+
+
+
+**3. Consider the following scenario. You are building a classification model with many hyperparameters on a relatively small dataset. You will see that the training error is extremely small. Can you fully trust this model? Discuss the reason. **
+
+When developing a prediction model with a training set, it should be tested on both the training and validation sets. The model is deemed to be a good prediction model if both the train error and the validation error (error on data not observed by the model) are minimal. However, without more examination, it is not advisable to entirely trust such a model, as there are various reasons why the model may not be trustworthy.
+
+When the model is underfitted, it indicates that it cannot correctly reflect the connection between the input and output variables. As a result, the performance of such a model is lower on both the training and validation sets. As a result, we must raise the model's complexity such that it correctly depicts the link between the inputs and the output variables.
+
+When the model is overfitted, it indicates that it performs extremely well on the training set with very high train accuracy, but when applied to the validation set, the error is very high with a big variation between the train error and the validation error. This suggests that the model has gotten too sophisticated, learning the train data with all of the noise and outliers and becoming sensitive to even little changes in the input variables. As a result, the goal of any machine learning model, Generalization, is not met, causing the model to perform very poorly on unknown data.
+Overfitting occurs most frequently when the train data is little and the model's complexity is high.
+
+The model with several hyperparameters in the presented example is generated using a rather modest dataset.
+
+As a result, there is a strong likelihood that the model will be overfitted. As previously stated, a model is deemed to be a good prediction model only when it performs well on both train and unseen data. Because the provided model has a high likelihood of overfitting and a large variance, it performs well on the training set but is likely to perform badly on unknown data owing to overfitting.
+
+As a result, we cannot trust the model until it generates accurate predictions on train data. Instead, it should be applied to unseen data to see whether there is any variance between the train error and the validation error. If the variance is excessive, the model should be retrained by lowering its complexity or using regularization techniques to allow the model to generalize rather than simply learning the patterns in the train dataset.
+
+**4. What is the role of the lambda parameter in regularized linear models such as Lasso or Ridge regression models?**
+
+Lambda is a hyperparameter that is utilized in linear models such as Lasso or Ridge Regression for Regularization, which is used to minimize the model's complexity.
+
+How Lambda works in Lasso and Ridge Regression to regularize the model:
+
+Linear regression models attempt to lower the loss function in order to arrive at the best weights for each attribute. Yet, when the model is overfitted and unable to generalize adequately, we employ regularization to punish it. This is accomplished by including an additional term for the loss function, the value of which is proportional to the Lambda value. As we increase the Lambda value, the total loss value increases, and the model tries to reduce the coefficients of the parameters to find the best answer. The theory is that by decreasing or regularizing the coefficients, prediction accuracy, variance, and model interpretability may all be improved.
+
+In ridge regression, we apply a penalty via a tuning parameter lambda that is determined using cross-validation. The goal is to reduce the fit by reducing the residual sum of squares and applying a shrinkage penalty. The shrinkage penalty is lambda times the sum of the squares of the coefficients, therefore big coefficients are punished. The bias remains constant as lambda increases, but the variance decreases. The disadvantage of the ridge is that it does not allow you to pick variables. It incorporates all the variables into the final model.
+
+The penalty in lasso is the total of the absolute values of the coefficients. When lambda is big enough, lasso decreases the coefficient estimates towards zero and has the effect of setting variables precisely equal to zero, but ridge does not. As a result, lasso accomplishes variable selection in the same way as the best subset selection technique does. Cross-validation is used to choose the tuning parameter lambda. When lambda is small, the resulting estimates are effectively least squares. When lambda rises, shrinkage happens, allowing variables that are at zero to be discarded. Hence, one key benefit of the lasso is that it combines shrinkage with variable selection.
+
+
+#PART B
+
+```{r}
+#Loading Required Packages
+library(ISLR)
+library(dplyr)
+library(glmnet)
+library(caret)
+```
+
+```{r}
+attach(Carseats)
+summary(Carseats)
+```
+
+**QB1) Build a Lasso regression model to predict Sales based on all other attributes (“Price”, “Advertising”, “Population”, “Age”, “Income” and “Education”). What is the best value of lambda for such a lasso model?**
+
+```{r}
+# Collecting all of the input attributes and scaling them into Carseats_Filtered.
+Carseats_Filtered<- Carseats %>% select( "Price", "Advertising", "Population", "Age", "Income", "Education") %>% scale(center = TRUE, scale = TRUE) 
+a <- as.matrix(Carseats_Filtered)
+b <- Carseats[,1]
+
+# Let us perform a basic linear regression on the data to determine the coefficients and R-squared value.
+
+c =lm(b~a)
+summary(c)
+
+```
+
+```{r}
+mean(c$residuals^2)
+```
+As a consequence of the foregoing findings, we can conclude that the provided variables explain only 36.43% of the variation in the dependent variable (Sales).
+Now, let's apply Lasso Regression on the same data and see if we can enhance the R-Squared value.
+
+```{r}
+fit <- glmnet(a, b )
+
+summary(fit)
+```
+
+
+```{r}
+plot(fit)
+```
+
+```{r}
+
+print(fit)
+```
+
+
+```{r}
+c_f <- cv.glmnet(a, b, alpha = 1)
+
+# finding the minimum lambda value
+
+best_lambda <- c_f$lambda.min
+
+best_lambda
+
+```
+
+```{r}
+plot(c_f)
+```
+
+Hence, based on the data above, we can see that there is only 37.38% variation in the target variable, sales with regularization, and a best lambda value of 0.0043.
+
+**QB2. What is the coefficient for the price (normalized) attribute in the best model (i.e. model with the optimal lambda)?**
+
+
+```{r}
+best_model <- glmnet(a, b, alpha = 1, lambda = best_lambda)
+
+coef(best_model)
+
+```
+The coefficient of the Price attribute with the best lambda value is -1.35384596.
+
+**QB3. How many attributes remain in the model if lambda is set to 0.01? How that number changes if lambda is increased to 0.1? Do you expect more variables to stay in the model (i.e., to have non-zero coefficients) as we increase lambda?**
+
+```{r}
+
+f_e <- glmnet(a,b, alpha=0.6)
+plot(f_e, xvar = "lambda")
+```
+
+```{r}
+plot(cv.glmnet(a,b,alpha=0.6))
+
+```
+
+```{r}
+#Using K-fold validation to select the best lambda.
+e <- cv.glmnet(a,b, alpha=0.6)
+#Finding a lambda value that minimizes the test.
+best_lambda <- e$lambda.min
+best_lambda 
+```
+
+```{r}
+plot(e)
+```
+
+```{r}
+fit.e <- glmnet(a,b,alpha=0.6)
+plot(fit.e, xvar="lambda")
+```
+##The best lambda value for such elastic-net model is .00653 
+
+**QB4. Build an elastic-net model with alpha set to 0.6. What is the best value of lambda for such a model?** 
+
+```{r}
+f.e <- glmnet(a,b,alpha = 0.6)
+plot(f.e,xvar = "lambda")
+plot(cv.glmnet(a,b,alpha = 0.6))
+cv.f.e <- cv.glmnet(a,b, alpha = 0.6)
+plot(cv.f.e)
+ec <- cv.f.e$lambda.min
+ec
+```
+For an elastic model with alpha set to 0.6, the optimum Lambda is 0.0023.
